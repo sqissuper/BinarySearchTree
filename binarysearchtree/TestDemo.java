@@ -56,14 +56,17 @@ class BinarySearchTree {
         if(root == null) return;
         BSNode cur = root;
         BSNode p = null;
-        if(cur.val < val) {
-            p = cur;
-            cur = cur.left;
-        } else if (cur.val > val) {
-            p = cur;
-            cur = cur.right;
-        } else {
-            removeNode(p,cur,val);
+        while (cur != null) {
+            if(val < cur.val) {
+                p = cur;
+                cur = cur.left;
+            } else if(val > cur.val) {
+                p = cur;
+                cur = cur.right;
+            } else {
+                removeNode(p,cur,val);
+                return;
+            }
         }
     }
     public void removeNode(BSNode p,BSNode cur,int val){
